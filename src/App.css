@@ -1,4 +1,14 @@
+body {
+  background-color: black;
+  background-image: url('/src/Funny-Movies-Backgrounds.jpeg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
 .App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
@@ -14,7 +24,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: rgb(45, 45, 45);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,4 +45,134 @@
   to {
     transform: rotate(360deg);
   }
+}
+.App .login_page {
+  display: flex;
+  margin-top: 180px;
+}
+.login_page {
+  display: flex;
+  margin:auto;
+  height: 100%;
+}
+
+.movie__present{
+  width: 80%;
+  margin: auto;
+  background-color: none;
+  color: white;
+}
+
+.movietile__store{
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(45, 45, 45);
+  margin: auto;
+  box-shadow: 5px 5px 15px 5px rgba(255, 255, 255, 0.32);
+  color: white;
+}
+.movietile__store>h3{
+  color: white;
+
+}
+
+.movietile__store__details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.movietile__store__desc {
+  text-align: left;
+}
+
+.comment_container {
+  display: flex;
+  flex-direction: column;
+  margin:1rem;
+  background-color: rgb(45, 45, 45);
+  box-shadow: 5px 5px 15px 5px rgba(255, 255, 255, 0.32);
+}
+.comment {
+  margin: 1rem;
+  margin-bottom: 1rem;
+}
+
+.comment h3 {
+  margin: 0.5rem;
+  text-align: start;
+  border:white;
+}
+
+.comment__remove {
+  align-self: flex-end;
+  margin: 0.5rem;
+  position: absolute;
+  background-color: rgb(45, 45, 45);
+  color: white;
+}
+
+.comment__date {
+  text-align: end;
+  margin: 0.5rem;
+}
+
+.comment__text {
+  text-align: start;
+  margin-left: 0.5rem;
+}
+
+.movietile_conteiner {
+  display: flex;
+  flex-direction: column;
+}
+
+.mymovies {
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: center;
+}
+
+.movietile {
+  display: flex;
+  max-width: 200px;
+  flex-direction: row;
+  margin: 1rem;
+  background-color: rgb(45, 45, 45);
+  color: white;
+  width: 300px;
+}
+
+.movietile__text {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.movietile img {
+  width: 100px;
+  max-height: 400px;
+  
+}
+.movietile a {
+  height: fit-content;
+}
+
+.movietile__text__heading{
+  margin-top: 2rem;
+}
+
+.movietile h4 {
+  margin: 0.5rem;
+  text-align: center;
+}
+
+.movietile__button {
+  margin: 0;
+  position: absolute;
+  align-self: flex-start;
+  background-color: rgb(45, 45, 45);
+  color: white;
 }

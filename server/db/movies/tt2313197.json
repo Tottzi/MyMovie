@@ -1,0 +1,26 @@
+{
+ "imdbID": "tt2313197",
+ "ratings": [
+  {
+   "author": "asdfgghj",
+   "authorName": "Adam",
+   "rating": "6"
+  }
+ ],
+ "comments": [
+  {
+   "author": "4ffd041d9c",
+   "authorName": "Adam",
+   "text": "New comment",
+   "timeStamp": "2021-07-01T18:27:50.692Z",
+   "id": "db9209c530"
+  },
+  {
+   "author": "37c4724945",
+   "authorName": "Adam",
+   "text": "Comment",
+   "timeStamp": "2021-07-01T18:27:44.407Z",
+   "id": "76f7683aa5"
+  }
+ ]
+}

@@ -1,0 +1,22 @@
+{
+ "userId": "7c362e0662",
+ "name": "Adam",
+ "movies": [
+  {
+   "imdbID": "tt0372784",
+   "ratings": 0
+  },
+  {
+   "imdbID": "tt0261392",
+   "ratings": 0
+  },
+  {
+   "imdbID": "tt0371746",
+   "ratings": "4"
+  },
+  {
+   "imdbID": "tt0071198",
+   "ratings": "6"
+  }
+ ]
+}
