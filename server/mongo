@@ -39,5 +39,4 @@ const saveDb = () => {
 }
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://tottzi:salt1234@userapi.nkgdz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
