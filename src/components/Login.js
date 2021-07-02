@@ -16,7 +16,7 @@ const DividerExampleVerticalForm = () => {
     localStorage.setItem('userName', userName)
     setUserName('');
     setUserPass('')
-    history.push("/search");
+    history.push("/");
     window.location.reload();
   }
 return (

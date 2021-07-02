@@ -3,11 +3,19 @@
  "ratings": [
   {
    "author": "asdfgghj",
-   "authorName": "Adam",
-   "rating": "6"
+   "authorName": "Oscar",
+   "rating": "8"
   }
  ],
  "comments": [
+  {
+   "author": "0df6669e31",
+   "authorName": "Adam",
+   "text": "New comment edited",
+   "timeStamp": "2021-07-02T07:17:41.597Z",
+   "id": "2c457085b8",
+   "changed": "2021-07-02T07:17:52.442Z"
+  },
   {
    "author": "4ffd041d9c",
    "authorName": "Adam",

@@ -22,8 +22,16 @@ const Addcomment = ({movie, addComment}) => {
   return (
     <div className='form_comment_add'>
       <form onSubmit={onSubmit}>
-        <label>{user}</label>
-        <input type='text' value={comment} onChange={e => setComment(e.target.value)}></input>
+        {/* <input type='text'
+        className='form_comment_add__input'
+        value={comment} onChange={e => setComment(e.target.value)}></input> */}
+        <textarea rows="4" cols="25"
+        className='form_comment_add__input'
+        value={comment} onChange={e => setComment(e.target.value)}
+        ></textarea>
+        <input type='submit' value='Add'
+        className='form_comment_add_button'
+        />
       </form>
     </div>
   )

@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import Login from './components/Login'
 import Navbar from './components/layouts/Navbar';
 import Mymovies from './components/Mymovies';
+import Welcome from './components/layouts/Welcome';
 
 function App() {
   const [ movies, setMovies] = useState([]);
@@ -100,6 +101,15 @@ function App() {
     <BrowserRouter>
     {!localStorage.getItem('userName') && <Redirect to={{ pathname: "/login" }} />}
     <Navbar />
+    <Switch>
+        <Route path='/' exact>
+          <div className="App login_page">
+            <div className='login_page'>
+              <Welcome />
+            </div>
+          </div>
+        </Route>
+      </Switch>
     <Switch>
         <Route path='/login' exact>
           <div className="App login_page">

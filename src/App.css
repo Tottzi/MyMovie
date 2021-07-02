@@ -46,6 +46,24 @@ body {
     transform: rotate(360deg);
   }
 }
+.searchbar{
+  margin:auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: rgb(45, 45, 45);
+  color: white;
+  max-width: 300px;
+
+}
+
+.searchbar__margin{
+  margin-top: 5rem
+}
+
+.searchbar__label{
+  margin-right: 0.5rem;
+}
+
 .App .login_page {
   display: flex;
   margin-top: 180px;
@@ -54,6 +72,12 @@ body {
   display: flex;
   margin:auto;
   height: 100%;
+}
+
+.home_welcome_img img{
+  border:solid black;
+  border-radius: 50%;
+  margin-top: 0;
 }
 
 .movie__present{
@@ -84,6 +108,23 @@ body {
   margin: auto;
 }
 
+.movietile__store__saved{
+  background-color: white;
+  color: rgb(45, 45, 45);
+  position: absolute;
+  margin-top: -350px;
+  padding: 0.5rem;
+  border-radius: 30px;
+  opacity: 0;
+
+}
+
+.movietile__store__saved--active{
+  opacity: 1;
+  visibility: hidden;
+  transition: 1s;
+}
+
 .movietile__store__desc {
   text-align: left;
 }
@@ -94,6 +135,7 @@ body {
   margin:1rem;
   background-color: rgb(45, 45, 45);
   box-shadow: 5px 5px 15px 5px rgba(255, 255, 255, 0.32);
+  max-height: 150px;
 }
 .comment {
   margin: 1rem;
@@ -114,6 +156,20 @@ body {
   color: white;
 }
 
+.comment__edit{
+  align-self: flex-end;
+  margin: 0.5rem 2rem 0.5rem 0.5rem;
+  position: absolute;
+  background-color: rgb(45, 45, 45);
+  color: white;
+}
+
+.comment__date__changed {
+  position: absolute;
+  align-self: flex-end;
+  margin: 0.5rem 3.5rem 0.5rem 0.5rem;
+}
+
 .comment__date {
   text-align: end;
   margin: 0.5rem;
@@ -122,6 +178,8 @@ body {
 .comment__text {
   text-align: start;
   margin-left: 0.5rem;
+  overflow:auto;
+  height: fit-content
 }
 
 .movietile_conteiner {
@@ -173,6 +231,23 @@ body {
   margin: 0;
   position: absolute;
   align-self: flex-start;
+  background-color: rgb(45, 45, 45);
+  color: white;
+}
+
+.form_comment_add {
+  height: 100px;
+  width: 200px;
+  background-color: rgb(45, 45, 45);
+  align-self: center;
+  margin: auto;
+  margin-top: 1rem;
+}
+
+.form_comment_add__input{
+  margin-top: 0.5rem;
+}
+.form_comment_add_button{
   background-color: rgb(45, 45, 45);
   color: white;
 }

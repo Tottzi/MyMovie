@@ -14,11 +14,13 @@
 
 .navbar__body{
   padding: 1rem 1rem 1rem;
+  width: 100%;
 }
 
 .navbar__list{
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: baseline;
 }
 
@@ -36,7 +38,8 @@
 }
 
 .navbar__list--right{
-  float: right;
+  align-self: flex-end;
+  /* margin-left: 500px; */
 }
 
 .navbar__list h2 {

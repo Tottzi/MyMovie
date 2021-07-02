@@ -7,7 +7,8 @@ const path = require('path');
 const { movieRatings,
   addComments,
   deleteComment,
-  addMovieUser
+  addMovieUser,
+  updateComment
 } = require('../index')
 
 const router = express.Router();
@@ -92,6 +93,13 @@ router.delete('/api/movie/comment', (req, res) => {
   const {imdbID, comment} = req.body
   deleteComment(imdbID, comment)
   res.sendStatus(204)
+})
+
+router.put('/api/movie/comment', (req, res) => {
+  const {imdbID, comment} = req.body.data
+  console.log(req.body.data)
+  updateComment(imdbID, comment)
+  res.json(req.body)
 })
 
 module.exports = router;

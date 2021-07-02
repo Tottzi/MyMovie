@@ -49,9 +49,24 @@ const deleteComment = (imdbID, comment) => {
   })
 }
 
+const updateComment = (imdbID, comment) => {
+  console.log(imdbID, comment)
+  const fileName = `${imdbID.toLowerCase()}.json`
+  fs.readFile(path.join(__dirname, '../movies', `${fileName}`), (err, data) => {
+    if(err){
+      return console.log(err)
+    }
+    const db = JSON.parse(data.toString())
+    const commentIndex = db.comments.findIndex(rat => rat.id === comment.id)
+    db.comments[commentIndex] = comment
+    fs.writeFileSync(path.join(__dirname, '../movies', `${fileName}`), JSON.stringify(db, 0, 1))
+  })
+}
+
 module.exports = {
   movieRatings,
   addComments,
   deleteComment,
-  addMovieUser
+  addMovieUser,
+  updateComment
 }

@@ -9,13 +9,19 @@ import Comment from "./Comment";
 const Movie = ({movie, user, addComment, fetchMoviesById, updateUser}) => {
   const {id: imdbID} = useParams()
   const [ rating , setRating ] = useState('')
+  const [savedBox, setSavedBox] = useState(false);
+  const saved = savedBox ? 'movietile__store__saved movietile__store__saved--active' : 'movietile__store__saved'
 
   useEffect(() => {
     fetchMoviesById(imdbID)
-    setRating(parseInt(movie.imdbRating))
+    setTimeout(() => {
+      setRating(Math.ceil(parseInt(movie.imdbRating)))
+    }, 100);
+    
   },[])
 
   const onRate = (e) => {
+    const actualRate = e.target.getAttribute('aria-posinset')
     updateUser(e.target.getAttribute('aria-posinset'), imdbID)
     axios.post('http://localhost:5000/api/movie/rating', {
       imdbID,
@@ -23,29 +29,39 @@ const Movie = ({movie, user, addComment, fetchMoviesById, updateUser}) => {
         {
           author: 'asdfgghj',
           authorName: localStorage.getItem('userName'),
-          rating: e.target.getAttribute('aria-posinset')
+          rating: actualRate
         }
       ]
     })
+    setSavedBox(!savedBox)
+    setTimeout(() => {
+      setSavedBox(!!savedBox)
+      console.log(savedBox)
+    }, 1000);
+    console.log(savedBox)
+
   }
+
+  console.log(rating)
   return (
     <div>
     <div className='movietile__store'>
       <img src={movie.Poster}></img>
-      <div className='movietile__store__details'>
+      <div className={'movietile__store__details'}>
+        <div className={saved}>Rating is saved</div>
         <h3>{movie.Title}</h3>
         <p>IMDB Rating:</p>
-        <Rating icon='star'
+        {rating && <Rating icon='star'
         defaultRating={parseInt(movie.imdbRating)} 
         maxRating={10}
         onRate={onRate}
-        />
+        />}
         <p>{movie.Plot}</p>
         <div className='movietile__store__desc'>
           <p style={{marginBottom: '0'}}>Actors:</p>
           <p style={{marginBottom: '2rem'}}>{movie.Actors}</p>
         </div>
-        <p>{movie.Released}</p>
+        <p>Released: {movie.Released}</p>
       </div>
     </div>
     <Addcomment movie={movie}

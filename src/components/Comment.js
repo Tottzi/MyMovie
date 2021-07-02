@@ -1,5 +1,5 @@
 import axios from "axios"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 
 const Comment = ({ comment, imdbID }) => {
@@ -10,9 +10,11 @@ const Comment = ({ comment, imdbID }) => {
   const minutes = time.getMinutes().toString().length === 1 ? `0${time.getMinutes()}` : time.getMinutes()
   const shownDate = `${day}/${month} ${hour}:${minutes}`
   const author = localStorage.getItem('userName')
+  const [isChanging, setIsChanging] = useState(false);
+  const [localComment, setLocalComment] = useState(comment.text)
 
   const onClick = (e) => {
-    console.log(e.target.parentNode.remove())
+    e.target.parentNode.remove()
     console.log(imdbID)
     axios.delete('http://localhost:5000/api/movie/comment', { data: {
       "imdbID": imdbID,
@@ -20,16 +22,32 @@ const Comment = ({ comment, imdbID }) => {
     }})
   }
 
+  const onEdit= (e) => {
+    // const newCom = comment.text !== localComment ? {...comment, text: localComment, changed: new Date}
+    isChanging && comment.text !== localComment && axios.put('http://localhost:5000/api/movie/comment', { data: {
+      "imdbID": imdbID,
+      "comment": {...comment, text: localComment, changed: new Date}
+    }})
+    setIsChanging(!isChanging)
+    console.log(isChanging)
+  }
+
   if (comment === 'undefined') 
     return (<h2>No comment</h2>)
     
   return (
     <div className='comment_container'>
-      {author === comment.authorName && 
-      <button className='comment__remove' onClick={onClick}>X</button>}
+      {author === comment.authorName &&
+      <>
+      <button className='comment__remove comment__edit' onClick={onEdit}>E</button>
+      <button className='comment__remove' onClick={onClick}>X</button>
+      </>}
       {comment && <>
       <h3>{comment.authorName}</h3>
-      <p className='comment__text'> {comment.text}</p>
+      {isChanging
+      ? <input className='comment__text' value={localComment} onChange={(e) => setLocalComment(e.target.value)} />
+      : <p className='comment__text'> {localComment}</p>}
+      {comment.changed && <p className='comment__date__changed'>Edited</p>}
       <p className='comment__date'>{shownDate}</p>
       </>}
     </div>
