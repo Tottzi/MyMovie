@@ -12,6 +12,7 @@ const fetchURL = process.env.MODE === 'DEV'
 
 const Movie = ({movie, user, addComment, fetchMoviesById, updateUser}) => {
   const {id: imdbID} = useParams()
+  console.log(imdbID)
   const [ rating , setRating ] = useState(3)
   const [savedBox, setSavedBox] = useState(false);
   const saved = savedBox ? 'movietile__store__saved movietile__store__saved--active' : 'movietile__store__saved'
