@@ -103,10 +103,10 @@ function App() {
   
   return (
     <BrowserRouter>
-    {!localStorage.getItem('userName') && <Redirect to={{ pathname: "/login" }} />}
+    {!localStorage.getItem('userName') && <Redirect to={{ pathname: "/MyMovie/login" }} />}
     <Navbar />
     <Switch>
-        <Route path='/' exact>
+        <Route path='/MyMovie/' exact>
           <div className="App login_page">
             <div className='login_page'>
               <Welcome />
@@ -115,7 +115,7 @@ function App() {
         </Route>
       </Switch>
     <Switch>
-        <Route path='/login' exact>
+        <Route path='/MyMovie/login' exact>
           <div className="App login_page">
             <div className='login_page'>
               <Login style={{maxWidth: '300px', position: 'absolute'}}/>
@@ -124,14 +124,14 @@ function App() {
         </Route>
       </Switch>
       <Switch>
-        <Route path='/search' exact>
+        <Route path='/MyMovie/search' exact>
           <div className="App">
             <Searchbar movies={movies} fetchMoviesByText={fetchMoviesByText}/>
           </div>
         </Route>
       </Switch>
       <Switch>
-        <Route path='/movie/:id'>
+        <Route path='/MyMovie/movie/:id'>
         <div className="App">
             <div className="movie__present">
               <Searchbar movies={movies} fetchMoviesByText={fetchMoviesByText} fetchMoviesById={fetchMoviesById}/>
@@ -146,7 +146,7 @@ function App() {
         </Route>
       </Switch>
       <Switch>
-        <Route path='/mymovies'>
+        <Route path='/MyMovie/mymovies'>
         <div className="App movietile_conteiner">
           <Mymovies mymovies={mymovies} fetchMyMovies={fetchMyMovies}/>
         </div>

@@ -19,12 +19,12 @@ const Navbar = () => {
       <nav className='navbar__body'>
         <ul className='navbar__list'>
           <li className='navbar__list__item'>
-            <a href='/'>Home</a>
+            <a href='/MyMovie/'>Home</a>
           </li>
         </ul>
         <ul className='navbar__list navbar__list--right'>
           <li className='navbar__list__item'>
-            <a href='/login' >Login</a>
+            <a href='/MyMovie/login' >Login</a>
           </li>
         </ul>
       </nav>
@@ -36,13 +36,13 @@ const Navbar = () => {
       <nav className='navbar__body'>
         <ul className='navbar__list'>
           <li className='navbar__list__item'>
-            <a href='/'>Home</a>
+            <a href='/MyMovie/'>Home</a>
           </li>
           <li className='navbar__list__item'>
-            <Link to='/search'>Search</Link>
+            <Link to='/MyMovie/search'>Search</Link>
           </li>
           <li className='navbar__list__item'>
-            <Link to='/mymovies'>MyMovies</Link>
+            <Link to='/MyMovie/mymovies'>MyMovies</Link>
           </li>
         </ul>
         <ul className='navbar__list navbar__list--right'>
@@ -50,7 +50,7 @@ const Navbar = () => {
             <h2>Hi {userState}!</h2>
           </li>
           <li className='navbar__list__item'>
-            <a href='/login' onClick={onClick} >Logout</a>
+            <a href='/MyMovie/login' onClick={onClick} >Logout</a>
           </li>
         </ul>
       </nav>

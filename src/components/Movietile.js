@@ -10,7 +10,7 @@ const fetchURL = process.env.MODE === 'DEV'
   : 'https://hackday-mymovies-backend.herokuapp.com'
 
 const Movietile = ({movie}) => {
-  const link = `/movie/${movie.imdbID}`
+  const link = `/MyMovie/movie/${movie.imdbID}`
   const [ rating , setRating ] = useState(0)
   const ratingt = movie.localData && movie.localData.ratings[0].rating/2
   const name = localStorage.getItem('userName')
