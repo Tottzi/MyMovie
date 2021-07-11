@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/MyMovie/static/css/main.f3cbcc5c.chunk.css",
+    "main.js": "/MyMovie/static/js/main.0e1aac99.chunk.js",
+    "main.js.map": "/MyMovie/static/js/main.0e1aac99.chunk.js.map",
+    "runtime-main.js": "/MyMovie/static/js/runtime-main.766dd00a.js",
+    "runtime-main.js.map": "/MyMovie/static/js/runtime-main.766dd00a.js.map",
+    "static/js/2.e18c2b8a.chunk.js": "/MyMovie/static/js/2.e18c2b8a.chunk.js",
+    "static/js/2.e18c2b8a.chunk.js.map": "/MyMovie/static/js/2.e18c2b8a.chunk.js.map",
+    "static/js/3.f6f667c1.chunk.js": "/MyMovie/static/js/3.f6f667c1.chunk.js",
+    "static/js/3.f6f667c1.chunk.js.map": "/MyMovie/static/js/3.f6f667c1.chunk.js.map",
+    "index.html": "/MyMovie/index.html",
+    "static/css/main.f3cbcc5c.chunk.css.map": "/MyMovie/static/css/main.f3cbcc5c.chunk.css.map",
+    "static/js/2.e18c2b8a.chunk.js.LICENSE.txt": "/MyMovie/static/js/2.e18c2b8a.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/MyMovie/static/media/Funny-Movies-Backgrounds.1acfdb61.jpeg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.766dd00a.js",
+    "static/js/2.e18c2b8a.chunk.js",
+    "static/css/main.f3cbcc5c.chunk.css",
+    "static/js/main.0e1aac99.chunk.js"
+  ]
+}
