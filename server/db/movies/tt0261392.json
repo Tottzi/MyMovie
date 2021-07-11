@@ -4,24 +4,16 @@
   {
    "author": "asdfgghj",
    "authorName": "Adam",
-   "rating": "5"
+   "rating": "10"
   }
  ],
  "comments": [
   {
-   "author": "7c91e442ab",
+   "author": "8bd7748fb7",
    "authorName": "Adam",
-   "text": "Awesome movie changed again",
-   "timeStamp": "2021-07-02T05:33:34.180Z",
-   "id": "fa0f145199",
-   "changed": "2021-07-02T06:23:49.518Z"
-  },
-  {
-   "author": "8198ed9df8",
-   "authorName": "Bob",
-   "text": "I loved it",
-   "timeStamp": "2021-07-01T14:59:01.732Z",
-   "id": "d016f96953"
+   "text": "asdasd",
+   "timeStamp": "2021-07-02T09:00:23.118Z",
+   "id": "0172711d45"
   }
  ]
 }

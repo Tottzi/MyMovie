@@ -4,11 +4,11 @@
  "movies": [
   {
    "imdbID": "tt0481536",
-   "ratings": "5"
+   "ratings": "10"
   },
   {
    "imdbID": "tt2313197",
-   "ratings": "4"
+   "ratings": "1"
   },
   {
    "imdbID": "tt0390521",
@@ -17,6 +17,18 @@
   {
    "imdbID": "tt0261392",
    "ratings": 0
+  },
+  {
+   "imdbID": "tt0099785",
+   "ratings": "6"
+  },
+  {
+   "imdbID": "tt1502397",
+   "ratings": "5"
+  },
+  {
+   "imdbID": "tt0112442",
+   "ratings": "5"
   }
  ]
 }

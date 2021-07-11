@@ -4,7 +4,7 @@
   {
    "author": "asdfgghj",
    "authorName": "Adam",
-   "rating": "5"
+   "rating": "2"
   }
  ],
  "comments": [
@@ -18,9 +18,10 @@
   {
    "author": "ede11ac7da",
    "authorName": "Adam",
-   "text": "New comment",
+   "text": "New comment edited",
    "timeStamp": "2021-07-02T06:38:58.116Z",
-   "id": "b8b278b4dd"
+   "id": "b8b278b4dd",
+   "changed": "2021-07-02T10:03:04.008Z"
   },
   {
    "author": "8131f4c193",

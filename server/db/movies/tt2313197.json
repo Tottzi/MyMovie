@@ -3,11 +3,25 @@
  "ratings": [
   {
    "author": "asdfgghj",
-   "authorName": "Oscar",
-   "rating": "8"
+   "authorName": "Bob",
+   "rating": "1"
   }
  ],
  "comments": [
+  {
+   "author": "fd925af403",
+   "authorName": "Bob",
+   "text": "You cannot delete my comment",
+   "timeStamp": "2021-07-02T10:45:38.942Z",
+   "id": "8c6180eada"
+  },
+  {
+   "author": "830d4828e6",
+   "authorName": "Bob",
+   "text": "It is my comment not yours",
+   "timeStamp": "2021-07-02T10:45:25.918Z",
+   "id": "049e927068"
+  },
   {
    "author": "0df6669e31",
    "authorName": "Adam",
