@@ -197,7 +197,7 @@ body {
   display: flex;
   max-width: 200px;
   flex-direction: row;
-  margin: 1rem;
+  margin: 2rem;
   background-color: rgb(45, 45, 45);
   color: white;
   width: 300px;
@@ -251,3 +251,27 @@ body {
   background-color: rgb(45, 45, 45);
   color: white;
 }
+
+.comment__remove__confirm{
+  background-color: rgb(45, 45, 45);
+  max-width: 300px;
+}
+
+.comment__remove__confirm .header {
+  background-color: rgb(45, 45, 45);
+  color: white;
+}
+.ui.small.modal>.header:not(.ui) {
+  background-color: rgb(45, 45, 45);
+  color: white;
+}
+.ui.modal>.content {
+  background-color: rgb(45, 45, 45);
+color: white;
+}
+
+.ui.modal>.actions {
+  background-color: rgb(45, 45, 45);
+  color: white;
+}
+

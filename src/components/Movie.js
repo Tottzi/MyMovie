@@ -5,17 +5,21 @@ import { Rating } from 'semantic-ui-react';
 import Addcomment from "./Addcomment";
 import Comment from "./Comment";
 
+const fetchURL = process.env.MODE === 'DEV'
+  ? 'http://localhost:5000'
+  : 'https://hackday-mymovies-backend.herokuapp.com'
+
 
 const Movie = ({movie, user, addComment, fetchMoviesById, updateUser}) => {
   const {id: imdbID} = useParams()
-  const [ rating , setRating ] = useState('')
+  const [ rating , setRating ] = useState(3)
   const [savedBox, setSavedBox] = useState(false);
   const saved = savedBox ? 'movietile__store__saved movietile__store__saved--active' : 'movietile__store__saved'
 
   useEffect(() => {
     fetchMoviesById(imdbID)
     setTimeout(() => {
-      setRating(Math.ceil(parseInt(movie.imdbRating)))
+      setRating(Math.round(parseInt(movie.imdbRating)))
     }, 100);
     
   },[])
@@ -23,7 +27,7 @@ const Movie = ({movie, user, addComment, fetchMoviesById, updateUser}) => {
   const onRate = (e) => {
     const actualRate = e.target.getAttribute('aria-posinset')
     updateUser(e.target.getAttribute('aria-posinset'), imdbID)
-    axios.post('http://localhost:5000/api/movie/rating', {
+    axios.post(`${fetchURL}/api/movie/rating`, {
       imdbID,
       ratings: [
         {
@@ -51,7 +55,7 @@ const Movie = ({movie, user, addComment, fetchMoviesById, updateUser}) => {
         <div className={saved}>Rating is saved</div>
         <h3>{movie.Title}</h3>
         <p>IMDB Rating:</p>
-        {rating && <Rating icon='star'
+        {<Rating icon='star'
         defaultRating={parseInt(movie.imdbRating)} 
         maxRating={10}
         onRate={onRate}

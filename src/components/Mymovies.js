@@ -10,7 +10,7 @@ const Mymovies = ({mymovies, fetchMyMovies}) => {
   if(mymovies.length < 1){
     return (<h2>You don't have movies in the collection</h2>)
   }
-  console.log('Rerender', mymovies)
+  
   return (
     <div className='mymovies'>
       {mymovies.length > 0 && mymovies.map(movie => (

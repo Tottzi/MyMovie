@@ -3,14 +3,28 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Rating } from 'semantic-ui-react';
 import { VscChromeClose } from "react-icons/vsc";
+import { useState, useEffect } from 'react';
+
+const fetchURL = process.env.MODE === 'DEV'
+  ? 'http://localhost:5000'
+  : 'https://hackday-mymovies-backend.herokuapp.com'
 
 const Movietile = ({movie}) => {
   const link = `/movie/${movie.imdbID}`
-  const rating = movie.localData && movie.localData.ratings[0].rating/2
+  const [ rating , setRating ] = useState(0)
+  const ratingt = movie.localData && movie.localData.ratings[0].rating/2
   const name = localStorage.getItem('userName')
 
+  useEffect(() => {
+    // setTimeout(() => {
+    //   setRating(Math.round(parseInt(movie.localData.ratings[0].rating/2)))
+    //   console.log(Math.round(parseInt(movie.localData.ratings[0].rating/2)))
+    // }, 1000);
+    
+  },[])
+
   const onClick = e => {
-    axios.delete('http://localhost:5000/api/user/mymovies', {data:{
+    axios.delete(`${fetchURL}/api/user/mymovies`, {data:{
       "name": name,
       "imdbID": movie.imdbID
     }})
@@ -29,7 +43,7 @@ const Movietile = ({movie}) => {
           <div className='movietile__text'>
             <h4 className='movietile__text__heading'>{movie.Title}</h4>
             <Rating icon='star'
-            defaultRating={rating} 
+            defaultRating={rating ? rating : ratingt} 
             maxRating={5}
             disabled
             />

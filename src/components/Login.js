@@ -4,15 +4,19 @@ import { useHistory } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { Button, Form, Grid, Segment } from 'semantic-ui-react'
 
+const fetchURL = process.env.MODE === 'DEV'
+  ? 'http://localhost:5000'
+  : 'https://hackday-mymovies-backend.herokuapp.com'
+
 const DividerExampleVerticalForm = () => {
   const [userName, setUserName] = useState('');
   const [userPass, setUserPass] = useState('');
   let history = useHistory();
   const onclick = async e => {
-    console.log(await axios.post('http://localhost:5000/api/user', {
+    await axios.post(`${fetchURL}/api/user`, {
       userName,
       userPass
-    }))
+    })
     localStorage.setItem('userName', userName)
     setUserName('');
     setUserPass('')

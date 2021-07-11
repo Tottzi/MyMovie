@@ -1,5 +1,10 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { Confirm } from "semantic-ui-react"
+import { useRef } from "react"
+const fetchURL = process.env.MODE === 'DEV'
+  ? 'http://localhost:5000'
+  : 'https://hackday-mymovies-backend.herokuapp.com'
 
 
 const Comment = ({ comment, imdbID }) => {
@@ -11,12 +16,14 @@ const Comment = ({ comment, imdbID }) => {
   const shownDate = `${day}/${month} ${hour}:${minutes}`
   const author = localStorage.getItem('userName')
   const [isChanging, setIsChanging] = useState(false);
-  const [localComment, setLocalComment] = useState(comment.text)
+  const [localComment, setLocalComment] = useState(comment.text);
+  const [ open, setOpen] = useState(false);
+  const textInput = useRef(null);
 
-  const onClick = (e) => {
-    e.target.parentNode.remove()
-    console.log(imdbID)
-    axios.delete('http://localhost:5000/api/movie/comment', { data: {
+  const removeBtn = (e) => {
+    textInput.current.remove()
+    setOpen(false)
+    axios.delete(`${fetchURL}/api/movie/comment`, { data: {
       "imdbID": imdbID,
       "comment": comment.id
     }})
@@ -24,7 +31,7 @@ const Comment = ({ comment, imdbID }) => {
 
   const onEdit= (e) => {
     // const newCom = comment.text !== localComment ? {...comment, text: localComment, changed: new Date}
-    isChanging && comment.text !== localComment && axios.put('http://localhost:5000/api/movie/comment', { data: {
+    isChanging && comment.text !== localComment && axios.put(`${fetchURL}/api/movie/comment`, { data: {
       "imdbID": imdbID,
       "comment": {...comment, text: localComment, changed: new Date}
     }})
@@ -36,11 +43,19 @@ const Comment = ({ comment, imdbID }) => {
     return (<h2>No comment</h2>)
     
   return (
-    <div className='comment_container'>
+    <div className='comment_container' ref={textInput}>
       {author === comment.authorName &&
       <>
       <button className='comment__remove comment__edit' onClick={onEdit}>E</button>
-      <button className='comment__remove' onClick={onClick}>X</button>
+      <button className='comment__remove' onClick={() => setOpen(true)}>X</button>
+      <Confirm
+          className='comment__remove__confirm'
+          header='Delete comment'
+          open={open}
+          onCancel={() => setOpen(false)}
+          onConfirm={removeBtn}
+          size='small'
+        />
       </>}
       {comment && <>
       <h3>{comment.authorName}</h3>

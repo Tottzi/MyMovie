@@ -10,6 +10,10 @@ import Navbar from './components/layouts/Navbar';
 import Mymovies from './components/Mymovies';
 import Welcome from './components/layouts/Welcome';
 
+const fetchURL = process.env.MODE === 'DEV'
+  ? 'http://localhost:5000'
+  : 'https://hackday-mymovies-backend.herokuapp.com'
+
 function App() {
   const [ movies, setMovies] = useState([]);
   const [ localMovies, setLocalMovies ] = useState([])
@@ -48,24 +52,24 @@ function App() {
       localMovie.localData.comments.unshift(com)
       setMovie(localMovie)
     }
-    axios.post('http://localhost:5000/api/movie/comment', {
+    axios.post(`${fetchURL}/api/movie/comment`, {
       imdbID: movie.imdbID,
       comments: [com]
     })
   }
 
   const fetchMyMovies = async (user) => {
-    const response = await axios.get(`http://localhost:5000/api/user/mymovies/${user}`)
+    const response = await axios.get(`${fetchURL}/api/user/mymovies/${user}`)
     // localStorage.setItem('mymovies', response.data)
     setMymovies(response.data)
   }
   const fetchAllMovies = async () => {
-    const response = await axios.get('http://localhost:5000/api/movies/');
+    const response = await axios.get(`${fetchURL}/api/movies/`);
     return localStorage.setItem('movies', JSON.stringify(response.data))
   }
 
   const fetchuserInfo = async user => {
-    const response = await axios.get(`http://localhost:5000/api/user/${user}`);
+    const response = await axios.get(`${fetchURL}/api/user/${user}`);
     localStorage.setItem('userData', await JSON.stringify(response.data))
   }
 
@@ -74,13 +78,13 @@ function App() {
   }
 
   const fetchMoviesByText = async search => {
-    const response = await axios.get(`http://localhost:5000/api/movies/${search}`);
+    const response = await axios.get(`${fetchURL}/api/movies/${search}`);
     response.data.Search && setMovies(response.data.Search)
     return response.data.Search;
   }
 
   const fetchMoviesById = async imdbID => {
-    const response = await axios.get(`http://localhost:5000/api/movie/${imdbID}`)
+    const response = await axios.get(`${fetchURL}/api/movie/${imdbID}`)
     response.data && setMovie(response.data)
     return response.data;
   }
