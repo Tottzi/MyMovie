@@ -9,7 +9,7 @@ const Dropdown = ({movies}) => {
     <div className='dropdown'>
       {movies.length > 0 && 
       movies.map(movie => (
-      <a key={movie.imdbID} href={concat('/MyMovie/movie/' + movie.imdbID)} style={{display: 'flex', flexDirection: 'row'}}>
+      <a key={movie.imdbID} href={concat('/movie/' + movie.imdbID)} style={{display: 'flex', flexDirection: 'row'}}>
         {movie.Poster !== 'N/A'
         ? <img alt='pic' src={movie.Poster} style={{maxWidth: '80px'}}/>
         : <img alt='pictures' src={fakeImg} style={{maxWidth: '80px'}}/>}
