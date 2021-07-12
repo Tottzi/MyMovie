@@ -15,8 +15,8 @@ const Comment = ({ comment, imdbID }) => {
   const minutes = time.getMinutes().toString().length === 1 ? `0${time.getMinutes()}` : time.getMinutes()
   const shownDate = `${day}/${month} ${hour}:${minutes}`
   const author = localStorage.getItem('userName')
-  const [isChanging, setIsChanging] = useState(false);
-  const [localComment, setLocalComment] = useState(comment.text);
+  const [ isChanging, setIsChanging ] = useState(false);
+  const [ localComment, setLocalComment ] = useState(comment.text);
   const [ open, setOpen] = useState(false);
   const textInput = useRef(null);
 

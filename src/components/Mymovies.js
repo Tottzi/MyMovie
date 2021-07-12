@@ -1,19 +1,23 @@
 import React, { useEffect } from 'react'
 import Movietile from './Movietile'
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchMyMoviesRedux } from '../slices/mymovies-slice';
 
-const Mymovies = ({mymovies, fetchMyMovies}) => {
+const Mymovies = () => {
+  const dispatch = useDispatch();
+  const {entities: myMovies, status} = useSelector(state => state.myMoviesSlice)
 
   useEffect(() => {
-    fetchMyMovies(localStorage.getItem('userName'))
+    dispatch(fetchMyMoviesRedux(localStorage.getItem('userName')))
   },[])
 
-  if(mymovies.length < 1){
+  if(myMovies.length < 1){
     return (<h2>You don't have movies in the collection</h2>)
   }
-  
+  console.log(status)
   return (
     <div className='mymovies'>
-      {mymovies.length > 0 && mymovies.map(movie => (
+      {status === 'done' && myMovies.map(movie => (
         <Movietile key={movie.imdbID} movie={movie} />
       ))}
     </div>

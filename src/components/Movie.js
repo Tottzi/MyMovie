@@ -4,25 +4,24 @@ import { useParams } from "react-router-dom";
 import { Rating } from 'semantic-ui-react';
 import Addcomment from "./Addcomment";
 import Comment from "./Comment";
+import { useDispatch, useSelector } from 'react-redux';
+import {fetchMoviesByIdRedux} from '../slices/movies-slice'
 
 const fetchURL = process.env.MODE === 'DEV'
   ? 'http://localhost:5000'
   : 'https://hackday-mymovies-backend.herokuapp.com'
 
 
-const Movie = ({movie, user, addComment, fetchMoviesById, updateUser}) => {
+const Movie = ({updateUser}) => {
   const {id: imdbID} = useParams()
-  console.log(imdbID)
-  const [ rating , setRating ] = useState(3)
+  const dispatch = useDispatch()
   const [savedBox, setSavedBox] = useState(false);
-  const saved = savedBox ? 'movietile__store__saved movietile__store__saved--active' : 'movietile__store__saved'
+  const saved = savedBox ? 'movietile__store__saved movietile__store__saved--active' : 'movietile__store__saved';
+  const {entities: movie, status} = useSelector(state => state.moviesSlice)
+
 
   useEffect(() => {
-    fetchMoviesById(imdbID)
-    setTimeout(() => {
-      setRating(Math.round(parseInt(movie.imdbRating)))
-    }, 100);
-    
+    dispatch(fetchMoviesByIdRedux(imdbID))
   },[])
 
   const onRate = (e) => {
@@ -47,7 +46,10 @@ const Movie = ({movie, user, addComment, fetchMoviesById, updateUser}) => {
 
   }
 
-  console.log(rating)
+  if(status !== 'done'){
+    return <><p>Loading ...</p></>
+  }
+  console.log(movie.Title, movie.imdbRating)
   return (
     <div>
     <div className='movietile__store'>
@@ -69,8 +71,7 @@ const Movie = ({movie, user, addComment, fetchMoviesById, updateUser}) => {
         <p>Released: {movie.Released}</p>
       </div>
     </div>
-    <Addcomment movie={movie}
-    addComment={addComment}/>
+    <Addcomment />
     <div className='comment'>
     {movie.localData && 
      movie.localData.comments ? movie.localData.comments.map(comment => (

@@ -1,7 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import {addComment} from '../slices/movies-slice';
 
-const Addcomment = ({movie, addComment}) => {
+const Addcomment = () => {
+  const dispatch = useDispatch()
   const user = localStorage.getItem('userName')
   const [ comment, setComment ] = useState('');
 
@@ -12,10 +15,10 @@ const Addcomment = ({movie, addComment}) => {
       author: Math.random().toString(16).substr(2,10),
       authorName: user,
       text: comment,
-      timeStamp,
+      timeStamp: `${timeStamp}`,
       id: Math.random().toString(16).substr(2,10)
     }
-    addComment(com, movie)
+    dispatch(addComment(com))
     setComment('')
   }
 
@@ -28,6 +31,7 @@ const Addcomment = ({movie, addComment}) => {
         <textarea rows="4" cols="25"
         className='form_comment_add__input'
         value={comment} onChange={e => setComment(e.target.value)}
+        required
         ></textarea>
         <input type='submit' value='Add'
         className='form_comment_add_button'
