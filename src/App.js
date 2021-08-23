@@ -9,6 +9,7 @@ import Login from './components/Login'
 import Navbar from './components/layouts/Navbar';
 import Mymovies from './components/Mymovies';
 import Welcome from './components/layouts/Welcome';
+import Posts from './components/Posts';
 
 const fetchURL = process.env.MODE === 'DEV'
   ? 'http://localhost:5000'
@@ -88,8 +89,15 @@ function App() {
       </Switch>
       <Switch>
         <Route path='/mymovies'>
-        <div className="App movietile_conteiner">
+        <div className="App movietile_container">
           <Mymovies />
+        </div>
+        </Route>
+      </Switch>
+      <Switch>
+        <Route path='/posts'>
+        <div className="App posts-container">
+          <Posts />
         </div>
         </Route>
       </Switch>

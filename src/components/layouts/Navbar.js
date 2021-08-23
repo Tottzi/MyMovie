@@ -44,6 +44,9 @@ const Navbar = () => {
           <li className='navbar__list__item'>
             <Link to='/mymovies'>MyMovies</Link>
           </li>
+          <li className='navbar__list__item'>
+            <Link to='/posts'>Posts</Link>
+          </li>
         </ul>
         <ul className='navbar__list navbar__list--right'>
           <li>

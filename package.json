@@ -9,6 +9,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
+    "cloudinary-react": "^1.7.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
@@ -21,6 +22,7 @@
   },
   "scripts": {
     "start": "MODE=PROD react-scripts start",
+    "start-dev": "MODE=DEV react-scripts start",
     "build": "MODE=PROD react-scripts build",
     "test": "MODE=DEV react-scripts test",
     "eject": "react-scripts eject",
