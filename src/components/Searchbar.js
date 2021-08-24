@@ -10,7 +10,11 @@ const Searchbar = ({movies, fetchMoviesByText}) => {
 
   useEffect(() => {
     search.length >2 && fetchMoviesByText(search)
+    return () => {
+      setSearch('')
+    }
   }, [search])
+
 
   return (
     <div className={searchClass}>

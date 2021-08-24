@@ -5,11 +5,13 @@
   margin-top: 0;
   max-height: 70px;
   width: 100%;
+  color: white;
 }
 
 .navbar__body{
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .navbar__body{
@@ -26,16 +28,23 @@
 
 .navbar__list__item{
   text-decoration: none;
-  background-color: white;
   margin: 0 1rem 0;
+  border-left: 1px solid white;
+  border-color: white;
   padding: 0.5rem;
   cursor:pointer;
   border-radius: 5px;
   list-style-type: none;
+  color: white;
+}
+
+.navbar__list__item > a {
+  color: white;
+  font-size: 1.3rem;
 }
 
 .navbar__list__item:hover {
-  background-color: white;
+  background-color: rgb(23, 23, 23);
 }
 
 .navbar__list--right{
