@@ -1,25 +1,12 @@
 import axios from 'axios';
 import React, {useState} from 'react'
 import { useHistory } from "react-router-dom";
-import { Link } from 'react-router-dom';
-import { Button, Form, Grid, Segment } from 'semantic-ui-react';
+import { Button, Form, Grid, Segment, Divider } from 'semantic-ui-react';
 import Signup from './Signup';
 
 const fetchURL = process.env.MODE === 'DEV'
   ? 'http://localhost:5000'
   : 'https://hackday-mymovies-backend.herokuapp.com';
-
-// const passwordCheck = psw => {
-//   const specChar = /\W/g.test(psw);
-//   const lowChar = /[a-z]/g.test(psw);
-//   const highChar = /[A-Z]/g.test(psw);
-//   const digitChar = /\d/g.test(psw);
-//   if(specChar && lowChar && highChar && digitChar){
-//     return true;
-//   }
-//   console.log('psw is not correct')
-//   return false
-// }
 
 const DividerExampleVerticalForm = () => {
   const [userName, setUserName] = useState('');
@@ -44,7 +31,6 @@ const DividerExampleVerticalForm = () => {
 
   const signup = () => {
     setIsOpen(!isOpen);
-    console.log(isOpen)
   }
 
 return (

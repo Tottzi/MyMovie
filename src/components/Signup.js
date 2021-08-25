@@ -1,6 +1,36 @@
 import React, { useState } from "react";
 import { Button, Form, Grid, Segment } from 'semantic-ui-react';
-import '../style/Signup.css'
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import {fetchMoviesByIdRedux } from '../slices/users-slice';
+import '../style/Signup.css';
+
+const fetchURL = process.env.MODE === 'DEV'
+? 'http://localhost:5000'
+: 'https://hackday-mymovies-backend.herokuapp.com';
+
+const passwordCheck = psw => {
+  // const specChar = /\W/g.test(psw);
+  const lowChar = /[a-z]/g.test(psw);
+  const highChar = /[A-Z]/g.test(psw);
+  const digitChar = /\d/g.test(psw);
+  if(lowChar && highChar && digitChar){
+    return true;
+  }
+  return false
+}
+
+const verifyPass = state => {
+  return state.pass === state.passVer
+}
+
+const verifyUserName = async state => {
+  const isExist = await axios.post(`http://localhost:5000/api/user/verify/username`,{username: state.username});
+  return await isExist.data !== null;
+}
+
+const passLengthCheck = psw => psw.length >= 8 && psw.length <= 16
+const userNameLengthCheck = name => name.length >= 3 && name.length <= 255
 
 const Signup = props => {
   const initValue = {
@@ -10,23 +40,31 @@ const Signup = props => {
   }
   const [newUser, setNewUser] = useState(initValue);
 
-  const changeUserName = value => {
-    setNewUser({...newUser, username: value})
+  const submitSignUp = async () => {
+    if(!userNameLengthCheck(newUser.username)){
+      return console.log('username must be minimum 3 char')
+    }
+    if(await verifyUserName(newUser)){
+      return console.log('The username has taken')
+    }
+    if(!verifyPass(newUser)){
+      return console.log('Passwords are not matching')
+    }
+    if(!(passLengthCheck(newUser.pass) && passwordCheck(newUser.pass))){
+      return console.log('not correct password')
+    }
+    const userData = await axios.post('http://localhost:5000/api/user/newuser', {username: newUser.username, psw: newUser.pass})
+    console.log(userData.data)
   }
+
   return (
     <div className='popup-box'>
       <div className='box'>
-        {/* <span className='close-icon' onClick={props.handleClose}>x</span>
-        <form>
-          <label> username:
-          <input type='text' value={newUser.username} onChange={e => setNewUser({...newUser, username: e.target.value})}></input>
-          </label>
-        </form> */}
         <span className='close-icon' onClick={props.handleClose}>x</span>
         <Segment placeholder>
           <Grid columns={1} relaxed='very' stackable>
             <Grid.Column>
-              <Form>
+              <Form onSubmit={submitSignUp}>
                 <Form.Input
                   onChange={(e) => setNewUser({...newUser, username: e.target.value})}
                   value={newUser.username}
@@ -54,8 +92,6 @@ const Signup = props => {
                 placeholder='8-16 char'
               />
 
-                {/* <Button content='Login' secondary onClick={login}/>
-                <p></p> */}
                 <Button content='Register' secondary icon='signup' size='medium'/>
               </Form>
             </Grid.Column>

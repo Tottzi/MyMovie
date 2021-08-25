@@ -21,7 +21,7 @@ const initialState = {
   entities: []
 }
 
-const postsSlice = createSlice({
+const usersSlice = createSlice({
   name: 'posts',
   initialState,
   reducers: {
@@ -43,5 +43,5 @@ const postsSlice = createSlice({
   }
 })
 
-export const { uploadImage } = postsSlice.actions;
-export default postsSlice.reducer;
+export const { uploadImage } = usersSlice.actions;
+export default usersSlice.reducer;
