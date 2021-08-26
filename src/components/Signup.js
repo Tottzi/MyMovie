@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { Button, Form, Grid, Segment } from 'semantic-ui-react';
 import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
-import {fetchMoviesByIdRedux } from '../slices/users-slice';
 import '../style/Signup.css';
 
-const fetchURL = process.env.MODE === 'DEV'
+const fetchURL = process.env.NODE_ENV !== 'PROD'
 ? 'http://localhost:5000'
 : 'https://hackday-mymovies-backend.herokuapp.com';
 
@@ -25,7 +23,7 @@ const verifyPass = state => {
 }
 
 const verifyUserName = async state => {
-  const isExist = await axios.post(`http://localhost:5000/api/user/verify/username`,{username: state.username});
+  const isExist = await axios.post(`${fetchURL}/api/user/verify/username`,{username: state.username});
   return await isExist.data !== null;
 }
 
@@ -53,7 +51,7 @@ const Signup = props => {
     if(!(passLengthCheck(newUser.pass) && passwordCheck(newUser.pass))){
       return console.log('not correct password')
     }
-    const userData = await axios.post('http://localhost:5000/api/user/newuser', {username: newUser.username, psw: newUser.pass})
+    const userData = await axios.post(`${fetchURL}/api/user/newuser`, {username: newUser.username, psw: newUser.pass})
     console.log(userData.data)
   }
 

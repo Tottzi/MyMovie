@@ -1,13 +1,11 @@
-import axios from 'axios';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Rating } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 import { deleteMyMovie } from '../slices/mymovies-slice'
 
-const fetchURL = process.env.MODE === 'DEV'
-  ? 'http://localhost:5000'
-  : 'https://hackday-mymovies-backend.herokuapp.com'
+// const fetchURL = process.env.MODE !== 'PROD'
+//   ? 'http://localhost:5000'
+//   : 'https://hackday-mymovies-backend.herokuapp.com'
 
 const Movietile = ({movie}) => {
   const link = `/movie/${movie.imdbID}`

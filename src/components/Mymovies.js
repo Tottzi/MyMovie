@@ -9,7 +9,7 @@ const Mymovies = () => {
 
   useEffect(() => {
     dispatch(fetchMyMoviesRedux(localStorage.getItem('userName')))
-  },[])
+  },[dispatch])
 
   if(myMovies.length < 1){
     return (<h2>You don't have movies in the collection</h2>)

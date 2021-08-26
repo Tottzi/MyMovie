@@ -1,10 +1,10 @@
 import axios from 'axios';
 import React, {useState} from 'react'
 import { useHistory } from "react-router-dom";
-import { Button, Form, Grid, Segment, Divider } from 'semantic-ui-react';
+import { Button, Form, Grid, Segment } from 'semantic-ui-react';
 import Signup from './Signup';
 
-const fetchURL = process.env.MODE === 'DEV'
+const fetchURL = process.env.MODE !== 'PROD'
   ? 'http://localhost:5000'
   : 'https://hackday-mymovies-backend.herokuapp.com';
 
@@ -17,15 +17,20 @@ const DividerExampleVerticalForm = () => {
 
   const login = async e => {
     if(userName && userPass){
-      await axios.post(`${fetchURL}/api/user`, {
+      const loggedInUser = await axios.post(`${fetchURL}/api/user/login`, {
         userName,
         userPass
       })
-      localStorage.setItem('userName', userName)
-      setUserName('');
-      setUserPass('')
-      history.push("/");
-      window.location.reload();
+      console.log(loggedInUser.data.name)
+      if(loggedInUser.data.name){
+        console.log('logged in')
+        localStorage.setItem('userName', userName)
+        setUserName('');
+        setUserPass('')
+        history.push("/");
+        return window.location.reload();
+      }
+      console.log(loggedInUser.data.message)
     }
   }
 

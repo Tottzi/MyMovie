@@ -5,7 +5,7 @@ const fetchURL = process.env.MODE === 'DEV'
   ? 'http://localhost:5000'
   : 'https://hackday-mymovies-backend.herokuapp.com'
 
-const name = localStorage.getItem('userName')
+// const name = localStorage.getItem('userName')
 
 export const fetchPostsRedux = createAsyncThunk(
   'posts/fetchPosts',

@@ -10,16 +10,12 @@ const Searchbar = ({movies, fetchMoviesByText}) => {
 
   useEffect(() => {
     search.length >2 && fetchMoviesByText(search)
-    return () => {
-      setSearch('')
-    }
-  }, [search])
-
+  }, [fetchMoviesByText, search])
 
   return (
     <div className={searchClass}>
       <label className='searchbar__label' htmlFor='search'>Search ...        </label>
-      <input type='text' placeholder='type a movie' value={search} onChange={(e) => setSearch(e.target.value)}/>
+      <input type='text' placeholder='type a movie' value={search} onChange={e => setSearch(e.target.value)}/>
       {movies.length > 0 && <Dropdown movies={movies}/>}
     </div>
   )

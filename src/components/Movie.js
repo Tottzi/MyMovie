@@ -7,7 +7,7 @@ import Comment from "./Comment";
 import { useDispatch, useSelector } from 'react-redux';
 import {fetchMoviesByIdRedux} from '../slices/movies-slice'
 
-const fetchURL = process.env.MODE === 'DEV'
+const fetchURL = process.env.MODE !== 'PROD'
   ? 'http://localhost:5000'
   : 'https://hackday-mymovies-backend.herokuapp.com'
 
@@ -22,7 +22,7 @@ const Movie = ({updateUser}) => {
 
   useEffect(() => {
     dispatch(fetchMoviesByIdRedux(imdbID))
-  },[])
+  },[dispatch, imdbID])
 
   const onRate = (e) => {
     const actualRate = e.target.getAttribute('aria-posinset')
@@ -53,7 +53,7 @@ const Movie = ({updateUser}) => {
   return (
     <div>
     <div className='movietile__store'>
-      <img src={movie.Poster}></img>
+      <img alt={movie.Title} src={movie.Poster}></img>
       <div className={'movietile__store__details'}>
         <div className={saved}>Rating is saved</div>
         <h3>{movie.Title}</h3>

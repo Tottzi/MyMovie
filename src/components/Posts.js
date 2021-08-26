@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 const Posts = () => {
   const newUserInitial = {
@@ -25,7 +25,8 @@ const Posts = () => {
 
 const handleSubmit = (e) => {
     e.preventDefault();
-    uploadImage(previewSource)
+    uploadImage(previewSource);
+    setPosts(newUserInitial)
 }
 
 const previewFile = (file) => {
@@ -75,7 +76,7 @@ return (
         {posts.map(post => (
           <>
           <p key={Math.random()}>{post.name}</p>
-          <img src={post.photo}></img>
+          <img alt='test' src={post.photo}></img>
           </>
         ))}
       </div>
