@@ -3,7 +3,7 @@ import { Button, Form, Grid, Segment } from 'semantic-ui-react';
 import axios from 'axios';
 import '../style/Signup.css';
 
-const fetchURL = process.env.NODE_ENV !== 'PROD'
+const fetchURL = process.env.NODE_ENV === 'DEV'
 ? 'http://localhost:5000'
 : 'https://hackday-mymovies-backend.herokuapp.com';
 

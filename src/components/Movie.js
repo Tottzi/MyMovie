@@ -7,7 +7,7 @@ import Comment from "./Comment";
 import { useDispatch, useSelector } from 'react-redux';
 import {fetchMoviesByIdRedux} from '../slices/movies-slice'
 
-const fetchURL = process.env.MODE !== 'PROD'
+const fetchURL = process.env.MODE === 'DEV'
   ? 'http://localhost:5000'
   : 'https://hackday-mymovies-backend.herokuapp.com'
 

@@ -2,7 +2,7 @@ import axios from "axios"
 import { useState } from "react"
 import { Confirm } from "semantic-ui-react"
 import { useRef } from "react"
-const fetchURL = process.env.MODE !== 'PROD'
+const fetchURL = process.env.MODE === 'DEV'
   ? 'http://localhost:5000'
   : 'https://hackday-mymovies-backend.herokuapp.com'
 

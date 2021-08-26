@@ -3,7 +3,7 @@ import { Rating } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 import { deleteMyMovie } from '../slices/mymovies-slice'
 
-// const fetchURL = process.env.MODE !== 'PROD'
+// const fetchURL = process.env.MODE === 'DEV'
 //   ? 'http://localhost:5000'
 //   : 'https://hackday-mymovies-backend.herokuapp.com'
 
