@@ -9,7 +9,7 @@ const Navbar = () => {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'))
     console.log(user)
-    setUserState(user.username)
+    user && setUserState(user.username)
   },[])
   const onClick = () => {
     localStorage.removeItem('user');
