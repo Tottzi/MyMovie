@@ -8,13 +8,14 @@ const Mymovies = () => {
   const {entities: myMovies, status} = useSelector(state => state.myMoviesSlice)
 
   useEffect(() => {
-    dispatch(fetchMyMoviesRedux(localStorage.getItem('userName')))
+    const user = JSON.parse(localStorage.getItem('user'));
+    dispatch(fetchMyMoviesRedux(user.username));
   },[dispatch])
 
   if(myMovies.length < 1){
     return (<h2>You don't have movies in the collection</h2>)
   }
-  console.log(status)
+
   return (
     <div className='mymovies'>
       {status === 'done' && myMovies.map(movie => (

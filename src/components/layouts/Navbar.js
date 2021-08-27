@@ -11,7 +11,7 @@ const Navbar = () => {
     setUserState(user)
   },[])
   const onClick = () => {
-    localStorage.removeItem('userName')
+    localStorage.removeItem('userName');
     setUserState('')
   }
   if(!userState){

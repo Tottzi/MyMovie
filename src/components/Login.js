@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { Button, Form, Grid, Segment } from 'semantic-ui-react';
 import Signup from './Signup';
 
-const fetchURL = process.env.MODE === 'DEV'
+const fetchURL = process.env.MODE !== 'DEV'
   ? 'http://localhost:5000'
   : 'https://hackday-mymovies-backend.herokuapp.com';
 
@@ -21,10 +21,9 @@ const DividerExampleVerticalForm = () => {
         userName,
         userPass
       })
-      console.log(loggedInUser.data.name)
-      if(loggedInUser.data.name){
-        console.log('logged in')
-        localStorage.setItem('userName', userName)
+      if(loggedInUser.data.username){
+        localStorage.setItem('userName', userName);
+        localStorage.setItem('user', JSON.stringify(loggedInUser.data))
         setUserName('');
         setUserPass('')
         history.push("/");

@@ -4,7 +4,7 @@ import Searchbar from './components/Searchbar';
 import Movie from './components/Movie';
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Login from './components/Login'
 import Navbar from './components/layouts/Navbar';
 import Mymovies from './components/Mymovies';
@@ -18,18 +18,6 @@ const fetchURL = process.env.MODE === 'DEV'
 function App() {
   const [ movies, setMovies] = useState([]);
 
-  useEffect(() => {
-    // fetchAllMovies()
-    setTimeout(() => {
-      fetchuserInfo(localStorage.getItem('userName'))
-    }, 100);
-  }, [])
-
-  const fetchuserInfo = async user => {
-    const response = await axios.get(`${fetchURL}/api/user/${user}`);
-    localStorage.setItem('userData', await JSON.stringify(response.data))
-  }
-
   const fetchMoviesByText = async search => {
     const response = await axios.get(`${fetchURL}/api/movies/${search}`);
     response.data.Search && setMovies(response.data.Search)
@@ -37,14 +25,14 @@ function App() {
   }
 
   const updateUser = (data, imdbID) => {
-    const userStateUpdate = JSON.parse(localStorage.getItem('userData'));
-    const userStateUpdateMovies = userStateUpdate.movies.map(movie => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const userStateUpdateMovies = user.movies.map(movie => {
       if(movie.imdbID === imdbID) {
         movie.ratings = data
       }
       return movie
     })
-    userStateUpdate.movies = userStateUpdateMovies
+    user.movies = userStateUpdateMovies
   }
   
   return (

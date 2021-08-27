@@ -42,7 +42,6 @@ const myMoviesSlice = createSlice({
       // Add user to the state array
       state.status = 'done'
       if (action.payload.length > 0 ) state.entities = [...action.payload]
-      console.log(action.payload)
   })
   }
 })
