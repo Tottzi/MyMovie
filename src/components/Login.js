@@ -20,9 +20,8 @@ const DividerExampleVerticalForm = () => {
       const loggedInUser = await axios.post(`${fetchURL}/api/user/login`, {
         userName,
         userPass
-      })
+      });
       if(loggedInUser.data.username){
-        localStorage.setItem('userName', userName);
         localStorage.setItem('user', JSON.stringify(loggedInUser.data))
         setUserName('');
         setUserPass('')

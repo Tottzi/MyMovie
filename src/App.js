@@ -37,7 +37,7 @@ function App() {
   
   return (
     <BrowserRouter>
-    {!localStorage.getItem('userName') && <Redirect to={{ pathname: "/login" }} />}
+    {!localStorage.getItem('user') && <Redirect to={{ pathname: "/login" }} />}
     <Navbar />
     <Switch>
         <Route path='/' exact>

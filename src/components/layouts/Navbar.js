@@ -7,11 +7,12 @@ const Navbar = () => {
   const runType = false;
   const [userState, setUserState ] = useState('')
   useEffect(() => {
-    const user = localStorage.getItem('userName')
-    setUserState(user)
+    const user = JSON.parse(localStorage.getItem('user'))
+    console.log(user)
+    setUserState(user.username)
   },[])
   const onClick = () => {
-    localStorage.removeItem('userName');
+    localStorage.removeItem('user');
     setUserState('')
   }
   if(!userState){
