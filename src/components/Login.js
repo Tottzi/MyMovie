@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { Button, Form, Grid, Segment } from 'semantic-ui-react';
 import Signup from './Signup';
 
-const fetchURL = process.env.MODE !== 'DEV'
+const fetchURL = process.env.MODE === 'DEV'
   ? 'http://localhost:5000'
   : 'https://hackday-mymovies-backend.herokuapp.com';
 
