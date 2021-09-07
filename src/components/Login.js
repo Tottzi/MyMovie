@@ -65,7 +65,11 @@ const DividerExampleVerticalForm = () => {
           <Grid.Column>
             <article
               className="login-warning"
-              style={warning.length > 1 ? warningStyle : {...warningStyle, display: "none"}}
+              style={
+                warning.length > 1
+                  ? warningStyle
+                  : { ...warningStyle, display: "none" }
+              }
             >
               {warning}
             </article>
