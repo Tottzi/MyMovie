@@ -52,7 +52,7 @@ function App() {
         <Route path='/login' exact>
           <div className="App login_page">
             <div className='login_page'>
-              <Login style={{maxWidth: '300px', position: 'absolute'}}/>
+              <Login style={{maxWidth: '400px', position: 'absolute'}}/>
             </div>
           </div>
         </Route>
